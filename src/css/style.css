@@ -3,3 +3,57 @@
     padding: 0;
     box-sizing: border-box;
 }
+
+body {
+    background-color: #b93a46;
+}
+
+.form {
+    width: 50%;
+    margin: 5% auto;
+    border: 5px solid #00221a;
+    border-radius: 6px;
+    padding: 25px 0 25px 0;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.input-field {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
+label {
+    width: 30%;
+    margin-right: 80px;
+}
+
+input {
+    height: 30px;
+    width: 20%;
+    outline: none;
+    padding: 0 10px;
+}
+
+input:hover {
+    outline: 1px solid #00221a;
+}
+
+input:focus {
+    outline: 1px solid #00221a;
+}
+
+.form button {
+    height: 30px;
+    width: 80px;
+    background-color: #00221a;
+    color: white;
+    cursor: pointer;
+}
+
+.form button:hover {
+    background-color: #00221ac0;
+
+}
