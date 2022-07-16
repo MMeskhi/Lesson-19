@@ -26,7 +26,6 @@ function validateUserName() {
   if (!userName.validity.valid) {
     userName.classList.add("error");
     userNameError.textContent = "User Name required";
-
     return false;
   } else {
     userNameError.textContent = "";
@@ -93,12 +92,17 @@ function validateMobileNumber() {
 }
 
 function validatePosition() {
-  if (position.value.length <= 30) {
-    position.textContent = "";
-    return true;
+  if (position.value.length <= 0) {
+    position.classList.add("error");
+    positionError.textContent = "Position is empty";
+    if (position.value.length >= 30) {
+      positionError.textContent =
+        "Position must not have more than 30 characters";
+    }
+    return false;
   } else {
-    positionError.textContent =
-      "Position must not have more than 30 characters";
+    positionError.textContent = "";
+    position.classList.remove("error");
+    return true;
   }
-  return false;
 }
