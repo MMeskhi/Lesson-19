@@ -92,13 +92,10 @@ function validateMobileNumber() {
 }
 
 function validatePosition() {
-  if (position.value.length <= 0) {
+  if (position.value.length >= 30) {
     position.classList.add("error");
-    positionError.textContent = "Position is empty";
-    if (position.value.length >= 30) {
-      positionError.textContent =
-        "Position must not have more than 30 characters";
-    }
+    positionError.textContent =
+      "Position must not have more than 30 characters";
     return false;
   } else {
     positionError.textContent = "";
