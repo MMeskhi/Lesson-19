@@ -11,3 +11,94 @@ const userSignUpForm = document.querySelector("#sign-up"),
   personalNumberError = document.querySelector("#personalnumber-error"),
   mobileNumberError = document.querySelector("#mobilenumber-error"),
   positionError = document.querySelector("#position-error");
+
+userSignUpForm.addEventListener("submit", (e) => {
+  e.preventDefault();
+  const isValidUserName = validateUserName();
+  const isValidEmail = validateEmail();
+  const isValidPassword = validatePassword();
+  const isValidPersonalNumber = validatePersonalNumber();
+  const isValidMobileNumber = validateMobileNumber();
+  const isValidPosition = validatePosition();
+});
+
+function validateUserName() {
+  if (!userName.validity.valid) {
+    userName.classList.add("error");
+    userNameError.textContent = "User Name required";
+
+    return false;
+  } else {
+    userNameError.textContent = "";
+    userName.classList.remove("error");
+    return true;
+  }
+}
+
+function validateEmail() {
+  if (!email.validity.valid) {
+    email.classList.add("error");
+    emailError.textContent = "Email required";
+    if (email.validity.typeMismatch) {
+      emailError.textContent = "Email is not valid";
+    }
+    return false;
+  } else {
+    emailError.textContent = "";
+    email.classList.remove("error");
+    return true;
+  }
+}
+
+function validatePassword() {
+  if (password.value.length <= 4) {
+    password.classList.add("error");
+    passwordError.textContent = "Password must be 4 or more characters";
+    return false;
+  } else {
+    passwordError.textContent = "";
+    password.classList.remove("error");
+    return true;
+  }
+}
+
+function validatePersonalNumber() {
+  if (!personalNumber.value.length != 11) {
+    personalNumber.classList.add("error");
+    let pN = /^[0-9]{11}$/;
+    if (!pN.test(personalNumber.value)) {
+      personalNumberError.textContent = "Personal Number must have 11 numbers";
+    }
+    return false;
+  } else {
+    personalNumberError.textContent = "";
+    personalNumber.classList.remove("error");
+    return true;
+  }
+}
+
+function validateMobileNumber() {
+  if (!mobileNumber.value.length != 9) {
+    mobileNumber.classList.add("error");
+    let mN = /^[0-9]{9}$/;
+    if (!mN.test(mobileNumber.value)) {
+      mobileNumberError.textContent = "Mobile Number must have 9 numbers";
+    }
+    return false;
+  } else {
+    mobileNumberError.textContent = "";
+    mobileNumber.classList.remove("error");
+    return true;
+  }
+}
+
+function validatePosition() {
+  if (position.value.length <= 30) {
+    position.textContent = "";
+    return true;
+  } else {
+    positionError.textContent =
+      "Position must not have more than 30 characters";
+  }
+  return false;
+}
